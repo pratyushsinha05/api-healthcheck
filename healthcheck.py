@@ -17,6 +17,11 @@ def main():
     parser.add_argument('--method', help='HTTP method (GET, POST, PUT, etc.)', required=True)
     parser.add_argument('--expected', help='Expected HTTP status code', type=int, required=True)
     args = parser.parse_args()
+    
+    # Display help if --help option is provided
+    if hasattr(args, 'help'):
+        parser.print_help()
+        return
 
     # Validate HTTP method
     valid_methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS']
